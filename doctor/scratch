@@ -1,0 +1,3 @@
+from doctor.serializers import DoctorSerializer, data, UserSerializer
+serializer = DoctorSerializer(data=data)
+serializer.is_valid()
