@@ -98,3 +98,11 @@ class AppointmentRetrieveByDoctorView(APIView):
         appointments = Appointment.objects.all().filter(doctorId=doctorId)
         serializer = AppointmentSerializer(appointments, many=True)
         return Response(data=serializer.data)
+
+
+class AppointmentRetrieveByHospitalView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    def get(self, request, hospitalId, format=None):
+        appointments = Appointment.objects.all().filter(hospitalId=hospitalId)
+        serializer = AppointmentSerializer(appointments, many=True)        
+        return Response(data=serializer.data)

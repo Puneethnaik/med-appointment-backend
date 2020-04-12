@@ -1,5 +1,5 @@
 from django.urls import path, include
-from api.views import  WorksForListCreateView, AppointmentRetrieveByDoctorView ,WorksForRetrieveUpdateDestroyView, AppointmentListCreateView, AppointmentRetrieveUpdateDestroyView
+from api.views import  WorksForListCreateView, AppointmentRetrieveByHospitalView ,AppointmentRetrieveByDoctorView ,WorksForRetrieveUpdateDestroyView, AppointmentListCreateView, AppointmentRetrieveUpdateDestroyView
 from rest_framework_jwt.views import obtain_jwt_token
 urlpatterns = [
     path(r'doctor/', include('doctor.urls')),
@@ -10,5 +10,6 @@ urlpatterns = [
     path(r'appointment/appointment/', AppointmentListCreateView.as_view()),
     path(r'appointment/appointment/<int:pk>/', AppointmentRetrieveUpdateDestroyView.as_view()),
     path(r'appointment/doctor/<int:doctorId>/', AppointmentRetrieveByDoctorView.as_view()),
+    path(r'appointment/hospital/<int:hospitalId>/', AppointmentRetrieveByHospitalView.as_view()),
     path(r'api-token-auth/', obtain_jwt_token),
 ]
