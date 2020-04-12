@@ -17,7 +17,7 @@ import json
 # Create your views here.
 
 class WorksForListCreateView(APIView):
-    permission_classes = [IsCreationOrIsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, format=None):
         works_for_objects = WorksFor.objects.all()
         serializer = WorksForSerializer(works_for_objects, many=True)
@@ -55,7 +55,7 @@ class WorksForRetrieveUpdateDestroyView(APIView):
         return response
 
 class AppointmentListCreateView(APIView):
-    permission_classes = [IsCreationOrIsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request, format=None):
         appointments = Appointment.objects.all()
         serializer = AppointmentSerializer(appointments, many=True)

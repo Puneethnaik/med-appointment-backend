@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import ForeignKey, IntegerField, AutoField
+from django.db.models import ForeignKey, IntegerField, AutoField, DateTimeField
 from doctor.models import Doctor
 from hospital.models import Hospital
 from patient.models import Patient
@@ -15,4 +15,6 @@ class Appointment(models.Model):
     doctorId = ForeignKey(Doctor, on_delete=models.CASCADE)
     hospitalId = ForeignKey(Hospital, on_delete=models.CASCADE)
     patientId = ForeignKey(Patient, on_delete=models.CASCADE)
+    start = DateTimeField()
+    end = DateTimeField()
     id=AutoField(primary_key=True)
