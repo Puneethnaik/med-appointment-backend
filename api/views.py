@@ -90,3 +90,11 @@ class AppointmentRetrieveUpdateDestroyView(APIView):
         response = Response(serializer.data)
         appointment.delete()
         return response
+
+
+class AppointmentRetrieveByDoctorView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    def get(self, request, doctorId, format=None):
+        appointments = Appointment.objects.all().filter(doctorId=doctorId)
+        serializer = AppointmentSerializer(appointments, many=True)
+        return Response(data=serializer.data)
