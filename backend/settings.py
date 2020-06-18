@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's#v06c4+dw=l!o=9#3+hzoa3-xw(%a=myneu+k9l=%9f23m$&('
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -85,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'medapplication',
-        'USER': 'puneeth',
-        'PASSWORD': '123',
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -132,7 +132,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles'),
+]
 
 #Django Rest Framework
 REST_FRAMEWORK = {

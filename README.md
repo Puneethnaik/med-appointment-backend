@@ -65,6 +65,12 @@ This repository maintains the source of the backend system of Med Application. T
 
 The backend system can be accessible [here](https://backend14557.herokuapp.com/)
 
+# Building Instructions
+Before using python3 manage.py runserver, you have to make sure environment variables are loaded. The following environment variables are used.
+- DJANGO_SECRET_KEY
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+
 
 
 
