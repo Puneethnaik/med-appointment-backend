@@ -87,8 +87,8 @@ DATABASES = {
         'NAME': 'medapplication',
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT'),
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
